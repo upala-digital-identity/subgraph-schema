@@ -10,7 +10,7 @@ When writing data:
 
 When reading data:
 - Get array of deleted roots since [latestDeletedRootTimestamp]
-- Get array of base score updates since "latestBaseScoreUpdateTimestamp] todo
+- Get array of base score updates since [latestBaseScoreUpdateTimestamp]
 
 #### Requests from group manager ([repo](https://github.com/upala-digital-identity/group-manager))
 - When updating scores "is this bundleHash deleted"
@@ -23,6 +23,9 @@ When populating multipassport:
 - Get UpalaID for the provided address (search owners and delegates of the ID)
 - Get owner and delegates for the Upala ID"
 - Get group metadata by address
+
+#### Requests from unique-human-lib ([repo](https://github.com/upala-digital-identity/unique-human-lib))
+- Get approved pools for the dapp address
 
 #### Housekeeping
 Data needed for the subgraph itself.
@@ -59,6 +62,11 @@ Need standardazed events for pools??
         id: ID!  # some ID?? 
         value: BitInt!  # uint256
         timestamp: BitInt!  # uint256
+        group: Group!
+    }
+
+    type DApp @entity {  # need many-to-many relation
+        id: ID!  # dapp address
         group: Group!
     }
 
