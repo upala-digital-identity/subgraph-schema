@@ -24,10 +24,14 @@ When populating multipassport:
 - Get owner and delegates for the Upala ID"
 - Get pool metadata by address
 - Get poolType (poolFactoryAddress) by pool address
+- Get pool balance by pool address todo
+- Get pool base score by pool address todo 
 
 #### Requests from unique-human-lib ([repo](https://github.com/upala-digital-identity/unique-human-lib))
 - Get approved pools for the dapp address
 - Get poolType (poolFactoryAddress) by pool address
+- Get pool balance by pool address todo
+- Get pool base score by pool address todo 
 
 #### Housekeeping
 Data needed for the subgraph itself.
@@ -36,10 +40,11 @@ All spawned pools are registered in Upala.sol with an emitted event in order to 
 Same for DApps
 Same for poolFactories
 
-## Contracts with events
+## Contracts to monitor
 - [Upala](https://github.com/upala-digital-identity/upala/blob/master/contracts/protocol/upala.sol)
 - [Pool and pool factory](https://github.com/upala-digital-identity/upala/blob/master/contracts/pools/signed-scores-pool.sol)
 - [DApp lib and example DApp](https://github.com/upala-digital-identity/upala/blob/master/contracts/mockups/dapp.sol)
+- DAI 
 
 ## Schema (under developement)
 
@@ -67,9 +72,8 @@ Same for poolFactories
         
         # base score
         baseScore: BitInt!  # uint256
-        # timestamp is needed for db housekeeping (is derived from event)
-        baseScoreTimestamp: BitInt!  # uint256
-
+        # monitors DAI contract transfer event
+        balance:  BitInt!  # uint256
         metadata: String  # metadata json
     }
 
