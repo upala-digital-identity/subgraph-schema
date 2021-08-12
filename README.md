@@ -68,6 +68,7 @@ Same for poolFactories
         poolFactoryAddress: Bytes!  # is used to select pool ABI
         
         # monitors ownership at creation and on OwnershipTransferred
+        # OwnershipTransferred event at Ownable contract
         owner: Bytes!
         
         # base score
@@ -101,3 +102,4 @@ Example querry to a subgraph - https://github.com/graphprotocol/ethdenver-dapp/b
 
 Need standardazed events for pools??
 Does it makes sense to store protocol settings in the subgraph?
+Many pools and many DApps. DApps don't require factories (anyone can register). Just a lib. But we need to monitor their events. Is this ok?
