@@ -8,7 +8,7 @@ When writing data:
 - Get pool manager for the pool address
 - Get scoreBundle timestamp by hash
 
-When reading data:
+When reading data (housekeeping):
 - Get array of deleted roots since [latestDeletedRootTimestamp]
 - Get array of base score updates since [latestBaseScoreUpdateTimestamp]
 
@@ -29,6 +29,7 @@ When populating multipassport:
 
 #### Requests from unique-human-lib ([repo](https://github.com/upala-digital-identity/unique-human-lib))
 - Get approved pools for the dapp address
+- Get delegates by Upala ID
 - Get poolType (poolFactoryAddress) by pool address
 - Get pool balance by pool address todo
 - Get pool base score by pool address todo 
@@ -43,7 +44,7 @@ Same for poolFactories
 ## Contracts to monitor
 - [Upala](https://github.com/upala-digital-identity/upala/blob/master/contracts/protocol/upala.sol)
 - [Pool and pool factory](https://github.com/upala-digital-identity/upala/blob/master/contracts/pools/signed-scores-pool.sol)
-- [DApp lib and example DApp](https://github.com/upala-digital-identity/upala/blob/master/contracts/mockups/dapp.sol)
+- [DApp lib and example DApp](https://github.com/upala-digital-identity/upala/blob/master/contracts/dapps/dapp.sol)
 - DAI 
 
 ## Schema (under developement)
@@ -76,6 +77,7 @@ Same for poolFactories
         # monitors DAI contract transfer event
         balance:  BitInt!  # uint256
         metadata: String  # metadata json
+        isApproved: bool  # admin can switch poolFactories on and off
     }
 
     type ScoreBundle @entity {
@@ -84,6 +86,7 @@ Same for poolFactories
         isDeleted: Boolean!
         pool: Pool!
     }
+
 
 #### DApps 
 
@@ -103,3 +106,4 @@ Example querry to a subgraph - https://github.com/graphprotocol/ethdenver-dapp/b
 Need standardazed events for pools??
 Does it makes sense to store protocol settings in the subgraph?
 Many pools and many DApps. DApps don't require factories (anyone can register). Just a lib. But we need to monitor their events. Is this ok?
+What is better Pool isApproved or link to PoolFactory and isApproved poolFactory property?
